@@ -1,6 +1,6 @@
 (function () {
 
-	angular.module('qudini.QueueApp', [])
+	angular.module('qudini.QueueApp')
 		.directive('customer', Customer);
 
 	Customer.$inject = ['$http'];
