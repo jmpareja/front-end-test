@@ -3,9 +3,9 @@
 	angular.module('qudini.QueueApp')
 		.directive('addCustomer', AddCustomer);
 
-	AddCustomer.$inject = ['$http'];
+	AddCustomer.$inject = ['$http', 'customerService'];
 
-	function AddCustomer($http) {
+	function AddCustomer($http, customerService) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -21,9 +21,12 @@
 				];
 
 				scope.addCustomer = function () {
-
+					customerService.addCustomer(scope.name, scope.product);
+					scope.onAdded();
+					// clear the form
+					scope.name = "";
+					scope.product = "";
 				};
-
 			}
 		}
 	};

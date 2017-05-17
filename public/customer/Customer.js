@@ -22,6 +22,9 @@
 			templateUrl: '/customer/customer.html',
 			link: function (scope) {
 
+				// set status for buttons
+				scope.bServed = (scope.customer.status === "served");
+
 				// calculate how long the customer has queued for
 				scope.queuedTime = new Date() - new Date(scope.customer.joinedTime);
 
@@ -30,6 +33,18 @@
 						id: scope.customer.id
 					} }).then(function (res) {
 						scope.onRemoved();
+					});
+				};
+
+				scope.serve = function () {
+					$http ({
+						method: "put",
+						url: "/api/customer/serve",
+						data: {
+							id: scope.customer.id
+						}
+					}).then(function (res) {
+						scope.onServed();
 					});
 				};
 
