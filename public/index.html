@@ -8,6 +8,23 @@
 		<script src="/add-customer/AddCustomer.js"></script>
 		<script src="/customer/Customer.js"></script>
 		<script src="/api/CustomerService.js"></script>
+		
+		<style>
+		  table, th, td {
+		      border: 1px solid grey;
+		      border-collapse: collapse;
+		      padding: 5px;
+		  }
+		  table tr:nth-child(odd) {
+		      background-color: #f1f1f1;
+		  }
+		  table tr:nth-child(even) {
+		      background-color: #ffffff;
+		  }
+		  td.header {
+		      font-weight: bold;
+		  }
+		</style>
 	</head>
 	<body ng-app="qudini.QueueApp" ng-controller="QueueController">
 
@@ -17,16 +34,27 @@
 		<h2>Queueing Customers</h2>
 		<ul>
 			<li ng-repeat="customer in customers">
-				<customer customer="customer" on-served="onCustomerServed()" on-removed="onCustomerRemoved()"></customer>
+			  <customer customer="customer" on-served="onCustomerServed()"
+				    on-removed="onCustomerRemoved()"></customer>
 			</li>
 		</ul>
 
 		<h2>Served customers</h2>
-		<ul>
-			<li ng-repeat="customer in customersServed">
-				<customer customer="customer"></customer>
-			</li>
-		</ul>
+		<table>
+		  <tr>
+		    <td/>
+		    <td class="header">Name</td>
+		    <td class="header">Product</bold></td>
+		    <td class="header">Joined Time</td>
+		  </tr>
+		  <tr ng-repeat="customer in customersServed">
+		    <td>{{ $index + 1 }}</td>
+		    <td>{{ customer.name }}</td>
+		    <td>{{ customer.product.name }}</td>
+		    <td>{{ customer.joinedTime }}</td>
+		    <td>{{ customer.queuedTime }}</td>
+		  </tr>
+		</table>
 
 	</body>
 </html>

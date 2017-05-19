@@ -5,9 +5,21 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var customers = [
-	{ id: uuid.v4(), name: 'William Shakespeare', product: { name: 'Grammatical advice' }, joinedTime: new Date().toString() },
-	{ id: uuid.v4(), name: 'Sherlock Holmes', product: { name: 'Magnifying glass repair' }, joinedTime: new Date().toString() },
-	{ id: uuid.v4(), name: 'Alan Turing', product: { name: 'Cryptography advice' }, joinedTime: new Date().toString() }
+    { id: uuid.v4(),
+      name: 'William Shakespeare',
+      product: { name: 'Grammatical advice' },
+      joinedTime: new Date().toString()
+    },
+    { id: uuid.v4(),
+      name: 'Sherlock Holmes',
+      product: { name: 'Magnifying glass repair' },
+      joinedTime: new Date().toString()
+    },
+    { id: uuid.v4(),
+      name: 'Alan Turing',
+      product: { name: 'Cryptography advice' },
+      joinedTime: new Date().toString()
+    }
 ];
 
 var servedCustomers = [
