@@ -30,12 +30,18 @@ function serveCustomer(id) {
 	customers = customers.filter(function (customer) {
 		if (customer.id === id) {
 			customer.status = 'served';
+			customer.queuedTime = dateDiffInSeconds(new Date(customer.joinedTime), 
+								new Date());
 			servedCustomers.push(customer);
 			return false;
 		} else {
 			return true;
 		}
 	});
+}
+
+function dateDiffInSeconds(date1, date2) {
+	return Math.floor((date2 - date1) / 1000);
 }
 
 function addCustomer(customer) {

@@ -25,9 +25,6 @@
 				// set status for buttons
 				scope.bServed = (scope.customer.status === "served");
 
-				// calculate how long the customer has queued for
-				scope.queuedTime = new Date() - new Date(scope.customer.joinedTime);
-
 				scope.remove = function () {
 					$http.delete('/api/customer/remove', { params: {
 						id: scope.customer.id
